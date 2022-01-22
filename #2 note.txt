@@ -1,0 +1,68 @@
+#2.2 Our First React Element
+* React JS : 어플리케이션이 iteractive하도록 만들어주는 library. 엔진과 같아서 interactive UI를 가지게 해줌.
+* React-dom : library 또는 package. 모든 react element들을 HTML body에 둘 수 있도록 해줌.
+//ReactDOM.render() - render의 의미는 react element를 가지고 HTML로 만들어 배치한다는 것. 
+즉, 사용자에게 보여준다는 의미
+//ReactDOM.render(span, span이 가야할 위치)
+-> 보통 body에 id=“root” 만들어서 span을 root 안에 두라고 함
+
+* banilla JS는 HTML -> JS 순서,
+* react JS는 JS ->  HTML 순서. React JS는 업데이트 해야 하는 HTML을 업데이트 할 수 있다는 점에서 banilla JS 보다 강력하다.
+
+#2.3 Events in React
+* 두 가지 const를 render 하고 싶은 경우: div를 만든다.
+이후 React.createElement("div", null, [span, btn...]); 와 같이 넣고 싶은 const로 배열을 만들어서 넣어준다.
+그러면 배열 속 const들이 모두 화면에 보이게 된다. 
+
+* property에 id, class name, style 모두 넣을 수 있다.(이전 강의 참고)
+뿐만 아니라 property에는 eventListener 넣는 것도 가능.
+클릭 - {onClick: () => console.log("I'm clicked")}
+마우스엔터 - {onMouseEnter: () => console.log("mouse enter")}
+* banilla JS에서는 클릭의 경우 "click"으로 하였는데 React JS에서는 onClick으로 쓴다.
+* banilla JS에서 4줄의 코드가 React JS에서 1줄로 간결화된다. -> 리액트의 강점
+
+#2.4 
+* empty div: React DOM이 React element를 가져다 놓는 곳이다.
+ReactDOM.render(container, root);를 통해 React element들을 root div 안에서 보여주게 된다.
+
+* createElement 보다 더 쉬운 방법을 사용할 것이다.
+* property object에 event listener를 등록할 수 있는 점이 react JS의 장점 중 하나이다.
+(why? addEventListener를 할 필요가 없으므로)
+ 
+[다음 강의- element를 생성하는 더 간단한 방식]
+
+#2.5 JSX
+* JSX – javascript 확장한 문법
+HTML과 거의 비슷. 
+태그를 열고 태그를 닫고, 내용은 태그 사이에 담는다.
+그리고 property를 HTML 태그의 속성처럼 적으면 됨.  
+const Title을 JSX로 생성하는 방법: 
+예제1- 
+const Title = <h3 id="title"
+    onMouseEnter={() => console.log("mouse enter")}>
+    Hello I'm a title</h3>
+예제2-
+const Button = (
+        <button
+            style={{
+                backgroundColor: "tomato",
+            }}   //style={{ backgroundColor: "tomato" }} -> 스타일은 {} 2개임
+            onClick={() => console.log("I'm clicked")}
+        >
+            Click me
+        </button>
+    );
+
+* JSX를 브라우저가 온전히 이해하지 못하므로 이해할 수 있게
+https://unpkg.com/@babel/standalone/babel.min.js 를 설치해야함, 안 하면 에러.
+바벨을 가져온 뒤 script 태그에 type="text/babel"로 속성을 추가해줘야 에러 사라지고 화면 정상적으로 보여진다.
+
+#2.6 JSX part Two
+div에 const 넣는 방법, 컴포넌트를 다른 컴포넌트 안에 넣는 방법
+1. const를 함수로 만들어 줘야한다.
+예제-  const Btn = () => ( ~~~~~ );
+-> 예제같은 방법을 arrow function 이라고 부름
+= () => ( ); 는 function Btn() { return ( ); } 와 같은 기능을 한다. 더 간단한 방법임.
+2. HTML 태그처럼 만들어서 넣어주면 된다.
+3. 컴포넌트의 첫 글자는 반드시 대문자여야 한다. 매우 중요하고 소문자면 Html로 인식한다.
+-> 우리가 직접 만든 요소는 전부 대문자로 시작해야 함
