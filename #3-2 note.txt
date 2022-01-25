@@ -1,0 +1,12 @@
+#3.4 State Functions
+* state를 세팅하는 방법
+(1) 직접 할당 :setState(state +1)   // 현재 state랑 관련 없는 값을 설정하고 싶을 때
+(2)함수를 할당:setState((state) => state +1)   // 첫번째 인자는 현재의 state, 현재 state에서 변화를 주는 방법
+
+#3.5 Inputs and State
+* JSX는 JavaScript에서 사용하는 문법 중 class, for을 쓰지 않음.
+따라서 JSX에서 class는 className으로, for은 htmlFor로 바꿔써야함.
+* React.useState()로 만든 변수 minutes으로 input 에 value={minutes}를 통해 값 관리 가능
+* onChange를 이용해 값이 변경될 때마다 함수를 실행시키는 것도 가능함
+
+#3.6 State Practice part One
